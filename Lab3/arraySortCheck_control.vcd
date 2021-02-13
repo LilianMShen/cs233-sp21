@@ -1,0 +1,916 @@
+$date
+	Sat Feb 13 04:07:30 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module arraySortCheck_control_test $end
+$var wire 1 ! zero_length_array $end
+$var wire 1 " sorted $end
+$var wire 1 # select_index $end
+$var wire 1 $ load_input $end
+$var wire 1 % load_index $end
+$var wire 1 & inversion_found $end
+$var wire 1 ' end_of_array $end
+$var wire 1 ( done $end
+$var reg 5 ) array [4:0] $end
+$var reg 1 * clock $end
+$var reg 1 + go $end
+$var reg 5 , length [4:0] $end
+$var reg 1 - reset $end
+$var integer 32 . i [31:0] $end
+$scope module circuit $end
+$var wire 5 / array [4:0] $end
+$var wire 1 * clk $end
+$var wire 1 ' end_of_array $end
+$var wire 1 & inversion_found $end
+$var wire 5 0 length [4:0] $end
+$var wire 1 - reset $end
+$var wire 1 ! zero_length_array $end
+$var wire 1 1 zero_length_case $end
+$var wire 1 # select_index $end
+$var wire 1 $ load_input $end
+$var wire 1 % load_index $end
+$var wire 5 2 length_minus_1 [4:0] $end
+$var wire 32 3 index_alu_in [31:0] $end
+$var wire 32 4 b [31:0] $end
+$var wire 32 5 array_plus_index_plus_1 [31:0] $end
+$var wire 32 6 array_plus_index [31:0] $end
+$var wire 32 7 array_alu_in [31:0] $end
+$var wire 1 8 a_ne_b_1 $end
+$var wire 1 9 a_lt_b_2 $end
+$var wire 1 : a_lt_b_1 $end
+$var wire 32 ; a [31:0] $end
+$var reg 5 < array_reg [4:0] $end
+$var reg 5 = index_reg [4:0] $end
+$var reg 5 > length_reg [4:0] $end
+$scope module compareElements $end
+$var wire 1 8 ne $end
+$var wire 1 : lt $end
+$var wire 32 ? B [31:0] $end
+$var wire 32 @ A [31:0] $end
+$upscope $end
+$scope module comparelength $end
+$var wire 5 A A [4:0] $end
+$var wire 5 B B [4:0] $end
+$var wire 1 C ne $end
+$var wire 1 9 lt $end
+$upscope $end
+$scope module comparelengthzero $end
+$var wire 5 D A [4:0] $end
+$var wire 5 E B [4:0] $end
+$var wire 1 1 ne $end
+$var wire 1 F lt $end
+$upscope $end
+$scope module rf $end
+$var wire 1 * clock $end
+$var wire 32 G internal_rdData [31:0] $end
+$var wire 32 H rdData [31:0] $end
+$var wire 5 I rdNum [4:0] $end
+$var wire 1 J rdWriteEnable $end
+$var wire 1 - reset $end
+$var wire 32 K rsData [31:0] $end
+$var wire 5 L rsNum [4:0] $end
+$var wire 32 M rtData [31:0] $end
+$var wire 5 N rtNum [4:0] $end
+$var integer 32 O i [31:0] $end
+$upscope $end
+$upscope $end
+$scope module control $end
+$var wire 1 * clock $end
+$var wire 1 P done_next $end
+$var wire 1 ' end_of_array $end
+$var wire 1 + go $end
+$var wire 1 & inversion_found $end
+$var wire 1 Q inversion_unsorted_next $end
+$var wire 1 R load_index_next $end
+$var wire 1 S load_input_next $end
+$var wire 1 T loading_next $end
+$var wire 1 - reset $end
+$var wire 1 U running_next $end
+$var wire 1 V select_index_next $end
+$var wire 1 W sorted_next $end
+$var wire 1 ! zero_length_array $end
+$var wire 1 " sorted $end
+$var wire 1 # select_index $end
+$var wire 1 $ load_input $end
+$var wire 1 % load_index $end
+$var wire 1 ( done $end
+$var reg 1 X inversion_unsorted $end
+$var reg 1 Y loading $end
+$var reg 1 Z running $end
+$scope module d1 $end
+$var wire 1 * clk $end
+$var wire 1 W d $end
+$var wire 1 [ enable $end
+$var wire 1 - reset $end
+$var reg 1 " q $end
+$upscope $end
+$scope module d2 $end
+$var wire 1 * clk $end
+$var wire 1 P d $end
+$var wire 1 \ enable $end
+$var wire 1 - reset $end
+$var reg 1 ( q $end
+$upscope $end
+$scope module d3 $end
+$var wire 1 * clk $end
+$var wire 1 S d $end
+$var wire 1 ] enable $end
+$var wire 1 - reset $end
+$var reg 1 $ q $end
+$upscope $end
+$scope module d4 $end
+$var wire 1 * clk $end
+$var wire 1 R d $end
+$var wire 1 ^ enable $end
+$var wire 1 - reset $end
+$var reg 1 % q $end
+$upscope $end
+$scope module d5 $end
+$var wire 1 * clk $end
+$var wire 1 V d $end
+$var wire 1 _ enable $end
+$var wire 1 - reset $end
+$var reg 1 # q $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+1_
+1^
+1]
+1\
+1[
+xZ
+xY
+xX
+xW
+xV
+xU
+0T
+xS
+xR
+xQ
+xP
+b100000 O
+bx N
+bx M
+bx L
+bx K
+zJ
+bz I
+bz H
+bx G
+xF
+b0 E
+bx D
+xC
+bx B
+bx A
+bx @
+bx ?
+bx >
+bx =
+bx <
+bx ;
+x:
+x9
+x8
+b0xxxxx 7
+bx 6
+bx 5
+bx 4
+b0xxxxx 3
+bx 2
+x1
+bx 0
+bx /
+bx .
+1-
+bx ,
+0+
+0*
+bx )
+x(
+x'
+x&
+x%
+x$
+x#
+x"
+x!
+$end
+#1
+0U
+1P
+0W
+0R
+0S
+0'
+b1 N
+b0 L
+1!
+19
+1C
+b1 5
+b0 6
+b0 3
+b0 =
+b0 A
+b11111 2
+b11111 B
+0F
+01
+b0 >
+b0 D
+b0 7
+b0 <
+0"
+0(
+0$
+0%
+0#
+0X
+0V
+0Z
+0Y
+1*
+bz G
+#2
+0Q
+0&
+08
+0:
+b0 4
+b0 ?
+b0 M
+b0 ;
+b0 @
+b0 K
+0*
+b100000 .
+0-
+#3
+1(
+18
+1:
+b1 4
+b1 ?
+b1 M
+1*
+#4
+1T
+0*
+1+
+b101 ,
+b101 0
+b1011 )
+b1011 /
+#5
+1R
+1S
+1Y
+1*
+#6
+0*
+#7
+1%
+1$
+1*
+#8
+0*
+#9
+0P
+0!
+b1100 N
+b1011 L
+b100 2
+b100 B
+11
+b101 >
+b101 D
+b1100 5
+b1011 6
+b1011 7
+b1011 <
+1*
+#10
+b1100 4
+b1100 ?
+b1100 M
+1:
+b1011 ;
+b1011 @
+b1011 K
+0*
+#11
+0(
+1*
+#12
+0*
+#13
+1*
+#14
+1U
+0T
+0*
+0+
+#15
+1U
+1R
+0S
+1V
+1Z
+0Y
+1*
+#16
+0*
+#17
+1S
+0R
+0$
+1#
+1*
+#18
+0*
+#19
+0S
+1R
+b1101 N
+b1100 L
+0%
+1$
+b1101 5
+b1100 6
+b1 3
+b1 =
+b1 A
+1*
+#20
+b1101 4
+b1101 ?
+b1101 M
+18
+1:
+b1100 ;
+b1100 @
+b1100 K
+0*
+#21
+1S
+0R
+0$
+1%
+1*
+#22
+0*
+#23
+0S
+1R
+b1110 N
+b1101 L
+0%
+1$
+b1110 5
+b1101 6
+b10 3
+b10 =
+b10 A
+1*
+#24
+b1110 4
+b1110 ?
+b1110 M
+18
+1:
+b1101 ;
+b1101 @
+b1101 K
+0*
+#25
+1S
+0R
+0$
+1%
+1*
+#26
+0*
+#27
+0S
+1R
+b1111 N
+b1110 L
+0%
+1$
+b1111 5
+b1110 6
+b11 3
+b11 =
+b11 A
+1*
+#28
+b1111 4
+b1111 ?
+b1111 M
+18
+1:
+b1110 ;
+b1110 @
+b1110 K
+0*
+#29
+1S
+0R
+0$
+1%
+1*
+#30
+0*
+#31
+0U
+0S
+1R
+1P
+1W
+1'
+b10000 N
+b1111 L
+0%
+1$
+09
+0C
+b10000 5
+b1111 6
+b100 3
+b100 =
+b100 A
+1*
+#32
+b10000 4
+b10000 ?
+b10000 M
+18
+1:
+b1111 ;
+b1111 @
+b1111 K
+0*
+#33
+0R
+1"
+1(
+0$
+1%
+0V
+0Z
+1*
+#34
+0*
+#35
+b10001 N
+b10000 L
+0#
+0%
+1C
+b10001 5
+b10000 6
+b101 3
+b101 =
+b101 A
+1*
+#36
+1T
+b10001 4
+b10001 ?
+b10001 M
+18
+1:
+b10000 ;
+b10000 @
+b10000 K
+0*
+1+
+b10 )
+b10 /
+#37
+1R
+1S
+1Y
+1*
+#38
+0*
+#39
+1%
+1$
+1*
+#40
+0*
+#41
+0P
+0W
+0'
+b11 N
+b10 L
+19
+b0 3
+b0 =
+b0 A
+b11 5
+b10 6
+b10 7
+b10 <
+1*
+#42
+b10 4
+b10 ?
+b10 M
+b1 ;
+b1 @
+b1 K
+0*
+#43
+0(
+0"
+1*
+#44
+0*
+#45
+1*
+#46
+1U
+0T
+0*
+0+
+#47
+1U
+1R
+0S
+1V
+1Z
+0Y
+1*
+#48
+0*
+#49
+1S
+0R
+0$
+1#
+1*
+#50
+0*
+#51
+0S
+1R
+b100 N
+b11 L
+0%
+1$
+b100 5
+b11 6
+b1 3
+b1 =
+b1 A
+1*
+#52
+b11 4
+b11 ?
+b11 M
+18
+1:
+b10 ;
+b10 @
+b10 K
+0*
+#53
+1S
+0R
+0$
+1%
+1*
+#54
+0*
+#55
+0S
+1R
+b101 N
+b100 L
+0%
+1$
+b101 5
+b100 6
+b10 3
+b10 =
+b10 A
+1*
+#56
+1Q
+1&
+b10 4
+b10 ?
+b10 M
+18
+0:
+b11 ;
+b11 @
+b11 K
+0*
+#57
+1S
+0R
+0$
+1%
+1X
+1*
+#58
+0*
+#59
+0S
+1R
+b110 N
+b101 L
+0%
+1$
+b110 5
+b101 6
+b11 3
+b11 =
+b11 A
+1*
+#60
+0&
+1:
+b101 4
+b101 ?
+b101 M
+18
+b10 ;
+b10 @
+b10 K
+0*
+#61
+1S
+0R
+0$
+1%
+1*
+#62
+0*
+#63
+0U
+0S
+1R
+1P
+1'
+b111 N
+b110 L
+0%
+1$
+09
+0C
+b111 5
+b110 6
+b100 3
+b100 =
+b100 A
+1*
+#64
+b111 4
+b111 ?
+b111 M
+18
+1:
+b101 ;
+b101 @
+b101 K
+0*
+#65
+0R
+1(
+0$
+1%
+0V
+0Z
+1*
+#66
+0*
+#67
+b1000 N
+b111 L
+0#
+0%
+1C
+b1000 5
+b111 6
+b101 3
+b101 =
+b101 A
+1*
+#68
+1T
+b1000 4
+b1000 ?
+b1000 M
+18
+1:
+b111 ;
+b111 @
+b111 K
+0*
+1+
+b11 ,
+b11 0
+b111 )
+b111 /
+#69
+1R
+1S
+1Y
+1*
+#70
+0*
+#71
+1%
+1$
+1*
+#72
+0*
+#73
+0P
+0'
+19
+b0 3
+b0 =
+b0 A
+b10 2
+b10 B
+b11 >
+b11 D
+b1000 5
+b111 6
+b111 7
+b111 <
+1*
+#74
+0*
+#75
+0(
+1*
+#76
+0*
+#77
+1*
+#78
+1U
+0T
+0*
+0+
+#79
+1U
+1R
+0S
+1V
+1Z
+0Y
+1*
+#80
+0*
+#81
+1S
+0R
+0$
+1#
+1*
+#82
+0*
+#83
+0S
+1R
+b1001 N
+b1000 L
+0%
+1$
+b1001 5
+b1000 6
+b1 3
+b1 =
+b1 A
+1*
+#84
+b1001 4
+b1001 ?
+b1001 M
+18
+1:
+b1000 ;
+b1000 @
+b1000 K
+0*
+#85
+1S
+0R
+0$
+1%
+1*
+#86
+0*
+#87
+0U
+0S
+1R
+1P
+1'
+b1010 N
+b1001 L
+0%
+1$
+09
+0C
+b1010 5
+b1001 6
+b10 3
+b10 =
+b10 A
+1*
+#88
+1&
+b110 4
+b110 ?
+b110 M
+18
+0:
+b1001 ;
+b1001 @
+b1001 K
+0*
+#89
+0R
+1(
+0$
+1%
+0V
+0Z
+1*
+#90
+0*
+#91
+b1011 N
+b1010 L
+0#
+0%
+1C
+b1011 5
+b1010 6
+b11 3
+b11 =
+b11 A
+1*
+#92
+0&
+1:
+b111 4
+b111 ?
+b111 M
+18
+b110 ;
+b110 @
+b110 K
+0*
+#93
+1*
+#94
+0*
+#95
+1*
+#96
+0*
+#97
+1*
+#98
+0*
+#99
+1*
+#100
+0*
+#101
+1*
+#102
+0*
+#103
+1*
+#104
+0*
+#105
+1*
+#106
+0*
+#107
+1*
+#108
+0*

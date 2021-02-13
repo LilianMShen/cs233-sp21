@@ -7,11 +7,11 @@ module arraySortCheck_control(sorted, done, load_input, load_index, select_index
 
     // If an inversion is found or we reach the end of array, end
     // algorithm
-    wire done_next = end_of_array | zero_length_array;
+    wire done_next = (end_of_array | zero_length_array) & ~((go & ~running) | loading);
     // If reached end of array and no inversion was found, then sorted
-    wire sorted_next = end_of_array & ~inversion_unsorted;
+    wire sorted_next = (end_of_array & ~inversion_unsorted) & ~((go & ~running) | loading);
 
-    wire inversion_unsorted_next = inversion_unsorted | inversion_found;
+    wire inversion_unsorted_next = (inversion_unsorted | inversion_found) & ~((go & ~running) | loading);
     wire loading_next = (~running & go);
     wire running_next = ((~go & loading) | ((running & ~end_of_array) & ~zero_length_array)) & ~done;
 

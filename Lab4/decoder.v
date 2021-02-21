@@ -31,84 +31,86 @@ module mips_decode(rd_src, writeenable, alu_src2, alu_op, except, opcode, funct)
         begin
             alu_op_reg <= 010;
             rd_src_reg <= 0;
-            alu_src2_reg= 00;
-            writeenable_reg = 1;
+            alu_src2_reg <= 00;
+            writeenable_reg <= 1;
             except_reg <= 0;
         end
     else if (opcode == `OP_OTHER0 & funct == `OP0_SUB)
         begin
             alu_op_reg <= 011;
             rd_src_reg <= 0;
-            alu_src2_reg= 00;
-            writeenable_reg = 1;
+            alu_src2_reg <= 00;
+            writeenable_reg <= 1;
             except_reg <= 0;
         end
     else if (opcode == `OP_OTHER0 & funct == `OP0_AND)
         begin
             alu_op_reg <= 100;
             rd_src_reg <= 0;
-            alu_src2_reg= 00;
-            writeenable_reg = 1;
+            alu_src2_reg <= 00;
+            writeenable_reg <= 1;
+            except_reg <= 0;
         end
     else if (opcode == `OP_OTHER0 & funct == `OP0_OR)
         begin
             alu_op_reg <= 101;
             rd_src_reg <= 0;
-            alu_src2_reg= 00;
-            writeenable_reg = 1;
+            alu_src2_reg <= 00;
+            writeenable_reg <= 1;
             except_reg <= 0;
         end
     else if (opcode == `OP_OTHER0 & funct == `OP0_NOR)
         begin
             alu_op_reg <= 110;
             rd_src_reg <= 0;
-            alu_src2_reg= 00;
-            writeenable_reg = 1;
+            alu_src2_reg <= 00;
+            writeenable_reg <= 1;
             except_reg <= 0;
         end
     else if (opcode == `OP_OTHER0 & funct == `OP0_XOR)
         begin
             alu_op_reg <= 111;
             rd_src_reg <= 0;
-            alu_src2_reg= 00;
-            writeenable_reg = 1;
+            alu_src2_reg <= 00;
+            writeenable_reg <= 1;
             except_reg <= 0;
         end
     else if (opcode == `OP_ADDI)
         begin
             alu_op_reg <= 010;
             rd_src_reg <= 1;
-            alu_src2_reg= 01;
-            writeenable_reg = 1;
+            alu_src2_reg <= 01;
+            writeenable_reg <= 1;
             except_reg <= 0;
         end
     else if (opcode == `OP_ANDI)
         begin
             alu_op_reg <= 100;
             rd_src_reg <= 1;
-            alu_src2_reg= 10;
-            writeenable_reg = 1;
+            alu_src2_reg <= 10;
+            writeenable_reg <= 1;
             except_reg <= 0;
         end
     else if (opcode == `OP_ORI)
         begin
             alu_op_reg <= 101;
             rd_src_reg <= 1;
-            alu_src2_reg= 10;
-            writeenable_reg = 1;
+            alu_src2_reg <= 10;
+            writeenable_reg <= 1;
             except_reg <= 0;
         end
     else if (opcode == `OP_XORI)
         begin
             alu_op_reg <= 111;
             rd_src_reg <= 1;
-            alu_src2_reg= 10;
-            writeenable_reg = 1;
+            alu_src2_reg <= 10;
+            writeenable_reg <= 1;
             except_reg <= 0;
         end
     else
         begin
-            except_reg = 1;
+            writeenable_reg <= 0;
+            except_reg <= 1;
         end;
     end
     

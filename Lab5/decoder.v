@@ -147,7 +147,7 @@ module mips_decode(alu_op, writeenable, rd_src, alu_src2, except, control_type,
             begin
                 control_type_reg <= 00;
             end
-            alu_op_reg <= -11;
+            alu_op_reg <= 011;
             rd_src_reg <= 1;
             alu_src2_reg <= 00;
             writeenable_reg <= 0;

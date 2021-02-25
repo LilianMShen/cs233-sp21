@@ -46,7 +46,7 @@ module mips_decode(alu_op, writeenable, rd_src, alu_src2, except, control_type,
     assign lui = lui_reg;
     assign slt = slt_reg;
     
-    always@(opcode or funct)
+    always@(opcode or funct or zero)
     begin
 
     control_type_reg <= 00;
@@ -137,32 +137,36 @@ module mips_decode(alu_op, writeenable, rd_src, alu_src2, except, control_type,
             writeenable_reg <= 1;
             except_reg <= 0;
         end
-    else if (opcode == `OP_BEQ)
+    else if (opcode == `OP_BEQ & zero == 1)
         begin
-            if (zero)
-            begin
-                control_type_reg <= 01;
-            end
-            else
-            begin
-                control_type_reg <= 00;
-            end
+            control_type_reg <= 01;
             alu_op_reg <= 011;
             rd_src_reg <= 1;
             alu_src2_reg <= 00;
             writeenable_reg <= 0;
             except_reg <= 0;
         end
-    else if (opcode == `OP_BNE)
+    else if (opcode == `OP_BEQ & zero == 0)
         begin
-            if (zero)
-            begin
-                control_type_reg <= 00;
-            end
-            else
-            begin
-                control_type_reg <= 01;
-            end
+            control_type_reg <= 00;
+            alu_op_reg <= 011;
+            rd_src_reg <= 1;
+            alu_src2_reg <= 00;
+            writeenable_reg <= 0;
+            except_reg <= 0;
+        end
+    else if (opcode == `OP_BNE & zero == 0)
+        begin
+            control_type_reg <= 01;
+            alu_op_reg <= 011;
+            rd_src_reg <= 1;
+            alu_src2_reg <= 00;
+            writeenable_reg <= 0;
+            except_reg <= 0;
+        end
+    else if (opcode == `OP_BNE & zero == 1)
+        begin
+            control_type_reg <= 00;
             alu_op_reg <= 011;
             rd_src_reg <= 1;
             alu_src2_reg <= 00;

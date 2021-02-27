@@ -17,7 +17,7 @@ module decoder_test;
         # 10 opcode = `OP_ANDI; funct = `OP0_NOR;
         # 10 opcode = `OP_ORI; funct = `OP0_AND;
         # 10 opcode = `OP_XORI; funct = `OP0_OR;
-        # 10 opcode =  `OP_OTHER0; funct = 6'h00;
+        # 10 opcode = `OP_OTHER0; funct = 6'h00;
 
         # 10 $finish;
     end

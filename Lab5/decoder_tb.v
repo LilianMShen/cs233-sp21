@@ -27,6 +27,11 @@ module decoder_test;
         # 10 opcode = `OP_SW;
         # 10 opcode = `OP_SB;
         # 10 opcode = `OP_OTHER0; funct = 6'h2c;
+        
+        # 10 opcode = 6'h22; funct = 6'h22; zero=0;
+        # 10 opcode = 6'h25; funct = 6'h25; zero=0;
+        # 10 opcode = 6'h27; funct = 6'h27; zero=0;
+        # 10 opcode = 6'h20; funct = 6'h20; zero=0;
 
         # 10 $finish;
     end

@@ -49,6 +49,12 @@ module mips_decode(alu_op, writeenable, rd_src, alu_src2, except, control_type,
     always@(opcode or funct or zero)
     begin
 
+    alu_op_reg <= 000;
+    rd_src_reg <= 0;
+    alu_src2_reg <= 0;
+    writeenable_reg <= 1;
+    except_reg <= 0;
+
     control_type_reg <= 00;
     mem_read_reg <= 0;
     word_we_reg <= 0;

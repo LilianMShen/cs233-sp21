@@ -85,9 +85,13 @@ if_end:
 
     addi    $t6, $t6, 1
 
+    j loop_two
+
 two_end:
 
     addi    $t2, $t2, 1
+
+    j loop_one
 
 one_end: 
 

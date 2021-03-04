@@ -63,16 +63,16 @@ loop_two:
 
     mul     $t7, $t2, $t0           # row * NUM_COLUMNS (recipe_idx * NUM_ITEMS)
     add     $t7, $t7, $t6           # + col (+ item_idx)
-    
-    ble     $t7, $0, if_end
-
-    mul     $t4, $t6, 4
-    add     $t4, $t4, $a0           #memory address of inventory[item_idx]
-    lw      $s0, 0($t4)             # value of inventory[item_idx]
 
     mul     $t7, $t7, 4
     add     $t7, $t7, $a1           # memory address of recipes[recipe_idx][item_idx]
     lw      $s1, 0($t7)             # value of recipes[recipe_idx][item_idx]
+    
+    ble     $s1, $0, if_end
+
+    mul     $t4, $t6, 4
+    add     $t4, $t4, $a0           #memory address of inventory[item_idx]
+    lw      $s0, 0($t4)             # value of inventory[item_idx]
 
     div     $t8, $s0, $s1           # value of times_item_req = inventory[item_idx] / recipes[recipe_idx][item_idx]
 
@@ -80,7 +80,7 @@ loop_two:
     add     $t9, $t9, $a2           # memory address of times_craftable[recipe_idx]
     lw      $s2, 0($t9)             # value of times_craftable[recipe_idx]
 
-    #bge     $t8, $s2, if_end       # nested if statement
+    bge     $t8, $s2, if_end       # nested if statement
     sw      $t8, 0($t9)
     addi    $t5, $0, 1
 

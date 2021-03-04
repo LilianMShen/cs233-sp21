@@ -46,10 +46,10 @@ craftable_recipes:
     li      $t2, 0                  # recipe_idx = 0
     li      $t3, 0                  # current address
 
-    add     $t4, $0, 2147483647     # largest positive number
-
 loop_one:
     bge     $t2, $t1, one_end       # dont skip as long as recipe_idx is less than NUM_RECIPES
+
+    add     $t4, $0, 2147483647     # largest positive number
     
     mul     $t3, $t2, 4
     add     $t3, $t3, $a2
@@ -66,18 +66,21 @@ loop_two:
     
     ble     $t7, $0, if_end
 
-    mul     $t3, $t6, 4
-    add     $t3, $t3, $a0           #memory address of inventory[item_idx]
+    mul     $t4, $t6, 4
+    add     $t4, $t4, $a0           #memory address of inventory[item_idx]
+    lw      $s0, 0($t4)             # value of inventory[item_idx]
 
     mul     $t7, $t7, 4
     add     $t7, $t7, $a1           # memory address of recipes[recipe_idx][item_idx]
-    
-    div     $t8, $t3, $t7
+    lw      $s1, 0($t7)             # value of recipes[recipe_idx][item_idx]
+
+    div     $t8, $s0, $s1           # value of times_item_req = inventory[item_idx] / recipes[recipe_idx][item_idx]
 
     mul     $t9, $t2, 4
-    add     $t9, $t9, $a2
+    add     $t9, $t9, $a2           # memory address of times_craftable[recipe_idx]
+    lw      $s2, 0($t9)             # value of times_craftable[recipe_idx]
 
-    bge     $t8, $t9, if_end        # nested if statement
+    #bge     $t8, $s2, if_end       # nested if statement
     sw      $t8, 0($t9)
     addi    $t5, $0, 1
 
@@ -89,8 +92,11 @@ if_end:
 
 two_end:
 
-    addi    $t2, $t2, 1
+    bne     $t5, $0, assigned_zero  # if assigned == 0
+    sw      $0, 0($t3)
+assigned_zero:
 
+    addi    $t2, $t2, 1
     j loop_one
 
 one_end: 

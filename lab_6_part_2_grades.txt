@@ -1,0 +1,12 @@
+Grades for version committed on time
+	pattern_match: 60.0 / 60
+			*Passed test: pattern test 1
+			*Passed test: pattern test 2
+			*Passed test: pattern test 3
+			*Passed test: pattern test 4
+			*Passed test: pattern test 5
+			*Passed test: pattern test 6
+		
+Total: 60.0 / 60
+
+Final Score: 60.0 / 60

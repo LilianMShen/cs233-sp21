@@ -1,0 +1,20 @@
+Grades for version committed on time
+	draw_line1: 14.0 / 20
+			*Passed test: draw_lines1
+			*Passed test: draw_lines2
+			*Failed test: draw_lines3
+				*Your output: Canvas struct:
+		  height = 5 
+		  width = 5 
+		  pattern = # 
+		  canvas = 
+		  #####
+		  #####
+		  ..###
+		  ...##
+		  ....#
+		
+		
+Total: 14.0 / 20
+
+Final Score: 14.0 / 20

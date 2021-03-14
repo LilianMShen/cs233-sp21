@@ -40,7 +40,7 @@ count_disjoint_regions_step:
     move    $s5, $a0
     move    $s6, $a1
 
-    li      $t0, 0              # t0 = region_count
+    li      $v0, 0              # v0 = region_count
     li      $s7, 0              # s7 = row
 
     lw      $t4, 0($s6)         # t4 = height
@@ -62,7 +62,7 @@ loop_two:
 
     beq     $t8, $t6, not_if
     beq     $t8, $s5, not_if
-    addi    $t0, $t0, 1         # increment region_count
+    addi    $v0, $v0, 1         # increment region_count
 
     move    $a0, $s7            # a0 = row
     move    $a1, $s8            # a1 = col

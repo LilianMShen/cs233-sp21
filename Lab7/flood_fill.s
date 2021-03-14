@@ -91,6 +91,6 @@ already_marked:
     lw      $s1, 4($sp)
 	lw		$ra, 8($sp)
 
-	add     $sp, $sp, 12         # callee save)
+	add     $sp, $sp, 12         # callee save
 
 	jr 		$ra

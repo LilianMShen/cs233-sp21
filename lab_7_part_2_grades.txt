@@ -1,0 +1,47 @@
+Grades for version committed on time
+	flood_fill: 30.0 / 30
+			*Passed test: flood_fill1
+			*Passed test: flood_fill2
+			*Passed test: flood_fill3
+			*Passed test: flood_fill4
+			*Passed test: flood_fill5
+		
+	count_disjoint_regions_step: 0.0 / 30
+			*Failed test: step1
+				*Error running test: 
+					Exception occurred at PC=0x004006bc
+					  Bad address in data/stack read: 0x00000000
+			*Failed test: step2
+				*Error running test: 
+					Exception occurred at PC=0x004006bc
+					  Bad address in data/stack read: 0x00000000
+			*Failed test: step3
+				*Error running test: 
+					Exception occurred at PC=0x004006bc
+					  Bad address in data/stack read: 0x00000000
+			*Failed test: step4
+				*Error running test: 
+					Exception occurred at PC=0x004006bc
+					  Bad address in data/stack read: 0x00000000
+		
+	count_disjoint_regions: 0.0 / 20
+			*Failed test: disjoint_regions1
+				*Error running test: 
+					Exception occurred at PC=0x00400a0c
+					  Unaligned address in inst/data fetch: 0x0000000e
+			*Failed test: disjoint_regions2
+				*Error running test: 
+					Exception occurred at PC=0x00400a0c
+					  Unaligned address in inst/data fetch: 0x00000009
+			*Failed test: disjoint_regions3
+				*Error running test: 
+					Exception occurred at PC=0x00400a0c
+					  Unaligned address in inst/data fetch: 0x00000009
+			*Failed test: disjoint_regions4
+				*Error running test: 
+					Exception occurred at PC=0x00400a0c
+					  Unaligned address in inst/data fetch: 0x00000009
+		
+Total: 30.0 / 80
+
+Final Score: 30.0 / 80

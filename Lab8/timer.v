@@ -17,7 +17,7 @@ module timer(TimerInterrupt, cycle, TimerAddress,
     register #(32, 32'hffffffff) InterruptCycle(InterruptCycleOut, data, clock, TimerWrite, reset);
     register #(1) InterruptLine(InterruptLineOut, 1'b1, clock, InterruptLineEnable, InterruptLineReset);
 
-    alu32 alu(AluOut, zero, negative, 3'b010, CycleCounterOut, 32'b1);
+    alu32 alu(AluOut, zero, negative, `ALU_ADD, CycleCounterOut, 32'b1);
 
     tristate t(cycle, CycleCounterOut, TimerRead);
 

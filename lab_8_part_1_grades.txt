@@ -1,0 +1,64 @@
+Grades for version committed on time
+	timer: 0.0 / 30
+			*Failed test: initial reset
+				*Your output: TimerInterrupt = z TimerAddress = 0 cycle = z
+			*Failed test: initial reset
+				*Your output: no output
+			*Failed test: reading cycle
+				*Your output: no output
+			*Failed test: reading cycle
+				*Your output: no output
+			*Failed test: reading cycle
+				*Your output: no output
+			*Failed test: reading cycle
+				*Your output: no output
+			*Failed test: reading cycle
+				*Your output: no output
+			*Failed test: requesting interrupt
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = z
+			*Failed test: reading cycle
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = 5
+			*Failed test: reading cycle
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = 6
+			*Failed test: raising interrupt
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = 7
+			*Failed test: raising interrupt
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = 8
+			*Failed test: raising interrupt
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = 9
+			*Failed test: acknowledging interrupt
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = z
+			*Failed test: acknowledged interrupt
+				*Your output: no output
+			*Failed test: requesting interrupt
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = 12
+			*Failed test: overwriting previous request
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = 13
+			*Failed test: raising interrupt
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = 14
+			*Failed test: acknowledging interrupt
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = z
+			*Failed test: acknowledged interrupt
+				*Your output: no output
+			*Failed test: reading cycle
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = 15
+			*Failed test: reading cycle
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = 16
+			*Failed test: reading from non-time address
+				*Your output: TimerInterrupt = z TimerAddress = 0 cycle = z
+			*Failed test: request a time interrupt
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = z
+			*Failed test: resetting again ...
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = 19
+			*Failed test: reset
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = 0
+			*Failed test: reset
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = 1
+			*Failed test: reset
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = 2
+			*Failed test: reset
+				*Your output: TimerInterrupt = z TimerAddress = 1 cycle = 3
+		
+Total: 0.0 / 30
+
+Final Score: 0.0 / 30

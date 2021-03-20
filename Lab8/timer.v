@@ -7,7 +7,7 @@ module timer(TimerInterrupt, cycle, TimerAddress,
     input         MemRead, MemWrite, clock, reset;
 
     wire [31:0] CycleCounterOut, InterruptCycleOut, AluOut;
-    wire InterruptLineOut, zero, negative, TimerRead, TimerWrite, Acknowledge, InterruptLineReset;
+    wire zero, negative, TimerRead, TimerWrite, Acknowledge, InterruptLineReset;
 
     wire InterruptLineEnable = CycleCounterOut == InterruptCycleOut;
     wire eqOne = 32'hffff001c == address;
@@ -15,7 +15,7 @@ module timer(TimerInterrupt, cycle, TimerAddress,
 
     register CycleCounter(CycleCounterOut, AluOut, clock, 1'b1, reset);
     register #(32, 32'hffffffff) InterruptCycle(InterruptCycleOut, data, clock, TimerWrite, reset);
-    register #(1) InterruptLine(InterruptLineOut, 1'b1, clock, InterruptLineEnable, InterruptLineReset);
+    register #(1) InterruptLine(TimerInterrupt, 1'b1, clock, InterruptLineEnable, InterruptLineReset);
 
     alu32 alu(AluOut, zero, negative, `ALU_ADD, CycleCounterOut, 32'b1);
 

@@ -24,7 +24,7 @@ module timer(TimerInterrupt, cycle, TimerAddress,
     or o1(TimerAddress, eqOne, eqTwo);
     or o2(InterruptLineReset, Acknowledge, reset);
 
-    and a1(Acknowledge, eqOne, eqTwo);
+    and a1(Acknowledge, MemWrite, eqTwo);
     and a2(TimerRead, eqOne, MemRead);
     and a3(TimerWrite, eqOne, MemWrite);
 endmodule

@@ -18,7 +18,11 @@ module machine(clk, reset);
    wire [31:0]  rd1_data, rd2_data, B_data, alu_out_data, load_data, wr_data;
 
    //Your extra wires go here
+   wire         TimerInterrupt, TimerAddress, TakenInterrupt, MemReadOut, MemWriteOut;
+   wire [31:0]  cycle, rd_data, wr_data_out;
+   wire [29:0]  EPC;
 
+   wire [31:0] takenInterruptMuxIn = 32'b80000180
 
    register #(30, 30'h100000) PC_reg(PC[31:2], next_PC[31:2], clk, /* enable */1'b1, reset);
    assign PC[1:0] = 2'b0;  // bottom bits hard coded to 00
@@ -45,6 +49,24 @@ module machine(clk, reset);
    mux2v #(5) rd_mux(wr_regnum, rt, rd, RegDst);
    
    //Connect your new modules below
-   
+
+   // rd2_data = c0:wr_data, 
+   cp0 c0(rd_data, EPC, TakenInterrupt, rd2_data, next_PC, MTC0, ERET, TimerInterrupt, clk, reset);
+
+   // rd2_data = t:data, alu_out_data = t:address,
+   timer tim(TimerInterrupt, cycle, TimerAddress, rd2_data, alu_out_data, MemRead, MemWrite, clk, reset);
+
+   mux2v eretMux(eretOut, next_PC, EPC, ERET);
+   mux2v #(30) takenInterruptMux(takenInterruptOut, eretOut, takenInterruptMuxIn[31:2], TakenInterrupt);
+   mux2v wr_dataMux(wr_data_out, wr_data, rd_data, MFC0);
+
+   assign wr_data = wr_data_out;
+
+   not notthething(NotIO, TimerAddress);
+   and aMemRead(MemReadOut, MemRead, NotIO);
+   and aMemWrite(MemWriteOut, NotIO, MemWrite);
+
+   assign MemRead = MemReadOut;
+   assign MemWrite = MemWriteOut;
 
 endmodule // machine

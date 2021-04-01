@@ -1,0 +1,6 @@
+Grades for version committed on time
+	part 2: 60.0 / 60.0
+		Completed test for part 2!  You scored 60 points.
+Total: 60.0 / 60.0
+
+Final Score: 60.0 / 60.0

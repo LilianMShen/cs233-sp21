@@ -28,12 +28,15 @@ module pipelined_machine(clk, reset);
 	wire [4:0]   wr_regnum= de_pipeline_out[4:0];
 
     wire         PCSrc, zero;
-    wire [31:0]  rd1_data, rd2_data, rd2_data_t, B_data, alu_out_data_t, alu_out_data, load_data, wr_data;
+    wire [31:0]  rd1_data, rd1_data_f, rd2_data, rd2_data_f, rd2_data_t, B_data, alu_out_data_t, alu_out_data, load_data, wr_data;
 
+
+	assign n_stall = ~stall;
+	assign flush = reset || PCSrc;
 
     // DO NOT comment out or rename this module
     // or the test bench will break
-    register #(30, 30'h100000) PC_reg(PC[31:2], next_PC[31:2], clk, /* enable */1'b1, reset);
+    register #(30, 30'h100000) PC_reg(PC[31:2], next_PC[31:2], clk, /* enable */n_stall, reset);
 
     assign PC[1:0] = 2'b0;  // bottom bits hard coded to 00
     adder30 next_PC_adder(PC_plus4_t, PC[31:2], 30'h1);
@@ -41,8 +44,8 @@ module pipelined_machine(clk, reset);
     mux2v #(30) branch_mux(next_PC, PC_plus4_t, PC_target, PCSrc);
     assign PCSrc = BEQ_t & zero;
 	
-	register #(30, 30'd0) if_pipeline1(PC_plus4, PC_plus4_t, clk, 1'b1, reset);
-	register #(32, 32'd0) if_pipeline2(inst, inst_t, clk, 1'b1, reset);
+	register #(30, 30'd0) if_pipeline1(PC_plus4, PC_plus4_t, clk, n_stall, flush);
+	register #(32, 32'd0) if_pipeline2(inst, inst_t, clk, n_stall, flush);
 
     // DO NOT comment out or rename this module
     // or the test bench will break
@@ -56,7 +59,7 @@ module pipelined_machine(clk, reset);
 
     // DO NOT comment out or rename this module
     // or the test bench will break
-    regfile rf (rd1_data, rd2_data_t,
+    regfile rf (rd1_data_f, rd2_data_f,
                rs, rt, wr_regnum, wr_data,
                RegWrite, clk, reset);
 
@@ -70,8 +73,35 @@ module pipelined_machine(clk, reset);
     mux2v #(32) wb_mux(wr_data, alu_out_data, load_data, MemToReg);
     mux2v #(5) rd_mux(wr_regnum_t, rt, rd, RegDst_t);
 	
-	register #(15, 32'b0) de_pipeline1(de_pipeline_out, {ALUOp_t, RegWrite_t, BEQ_t, ALUSrc_t, MemRead_t, MemWrite_t, MemToReg_t, RegDst_t, wr_regnum_t}, clk, 1'b1, reset);
-	register #(32, 32'b0) de_pipeline2(alu_out_data, alu_out_data_t, clk, 1'b1, reset);
-	register #(32, 32'b0) de_pipeline3(rd2_data, rd2_data_t, clk, 1'b1, reset);
+	register #(15, 32'b0) de_pipeline1(de_pipeline_out, {ALUOp_t, RegWrite_t, BEQ_t, ALUSrc_t, MemRead_t, MemWrite_t, MemToReg_t, RegDst_t, wr_regnum_t}, clk, 1'b1, stall);
+	register #(32, 32'b0) de_pipeline2(alu_out_data, alu_out_data_t, clk, 1'b1, stall);
+	register #(32, 32'b0) de_pipeline3(rd2_data, rd2_data_t, clk, 1'b1, stall);
+	
+	forwarding_unit fu(ForwardA, ForwardB, rs, rt, wr_regnum, RegWrite);
+	
+	mux2v #(32) fuA(rd1_data, rd1_data_f, alu_out_data, ForwardA);
+	mux2v #(32) fuB(rd2_data_t, rd2_data_f, alu_out_data, ForwardB);
+	
+	hazard_unit hu(stall, rs, rt, wr_regnum, MemRead);
 	
 endmodule // pipelined_machine
+
+
+module forwarding_unit(ForwardA, ForwardB, rs, rt, wr_regnum_MW, RegWrite_MW);
+	input [4:0] rs, rt, wr_regnum_MW;
+	input RegWrite_MW;
+	output ForwardA, ForwardB;
+	
+	assign ForwardA = (rs == wr_regnum_MW) & RegWrite_MW & !(wr_regnum_MW == 5'b00000);
+	assign ForwardB = (rt == wr_regnum_MW) & RegWrite_MW & !(wr_regnum_MW == 5'b00000);
+	
+endmodule // forwarding unit
+
+
+module hazard_unit(stall, rs, rt, wr_regnum_MW, MemRead_MW);
+    input [4:0] rs, rt, wr_regnum_MW;
+    input MemRead_MW;
+    output stall;
+
+    assign stall = ((rs == wr_regnum_MW) || (rt == wr_regnum_MW)) & MemRead_MW & !(wr_regnum_MW == 5'b00000);
+endmodule

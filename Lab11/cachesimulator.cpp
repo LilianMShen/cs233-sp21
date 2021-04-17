@@ -72,7 +72,7 @@ Cache::Block* CacheSimulator::bring_block_into_cache(uint32_t address) const {
   uint32_t last = set[0]->get_last_used_time();
   block = set[0];
   for (int i = 0; i < set.size(); i++){
-    if (last < set[i]->get_last_used_time()){
+    if (last > set[i]->get_last_used_time()){
       last = set[i]->get_last_used_time();
       block = set[i];
     }
@@ -88,6 +88,7 @@ Cache::Block* CacheSimulator::bring_block_into_cache(uint32_t address) const {
 }
 
 uint32_t CacheSimulator::read_access(uint32_t address) const {
+  _use_clock++;
   /**
    * TODO
    *
@@ -103,10 +104,11 @@ uint32_t CacheSimulator::read_access(uint32_t address) const {
     block = bring_block_into_cache(address);
   }
   block->set_last_used_time(_use_clock.get_count());
-  return read_word_at_offset(offset);
+  return block->read_word_at_offset(offset);
 }
 
 void CacheSimulator::write_access(uint32_t address, uint32_t word) const {
+  _use_clock++;
   /**
    * TODO
    *
@@ -120,4 +122,18 @@ void CacheSimulator::write_access(uint32_t address, uint32_t word) const {
    * 5. a. If the policy is write back, mark `block` as dirty.
    *    b. Otherwise, write `word` to `address` in memory.
    */
+  // Cache::Block* block = find_block(address);
+  // if (block == NULL){
+  //   if(_policy.is_write_allocate()){
+  //     block = bring_block_into_cache(address);
+  //   } else {
+  //     _memory->write_word(address, word);
+  //   }
+  // }
+  // block->set_last_used_time(_use_clock.get_count());
+  // if(_policy.is_write_back()){
+  //   block->mark_as_dirty();
+  // } else {
+  //   _memory->write_word(address, word);
+  // }
 }

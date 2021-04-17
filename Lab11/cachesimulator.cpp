@@ -48,7 +48,43 @@ Cache::Block* CacheSimulator::bring_block_into_cache(uint32_t address) const {
    * 4. Update the `block`'s tag. Read data into it from memory. Mark it as
    *    valid. Mark it as clean. Return a pointer to the `block`.
    */
-  return NULL;
+
+  const CacheConfig& config = _cache->get_config();
+  uint32_t tag = extract_tag(address, config);
+  uint32_t index = extract_index(address, config);
+  Cache::Block *block = nullptr;
+  //Cache::Block block = Block(index, config)
+  
+  vector<Cache::Block*> set = _cache->get_blocks_in_set(index);
+
+  for (int i = 0; i < set.size(); i++){
+    if (!set[i]->is_valid()) {
+      block = set[i];
+      block ->set_tag(tag);
+      block ->read_data_from_memory(_memory);
+      block ->mark_as_valid();
+      block ->mark_as_clean();
+      
+      return block;
+    }
+  }
+
+  uint32_t last = set[0]->get_last_used_time();
+  block = set[0];
+  for (int i = 0; i < set.size(); i++){
+    if (last < set[i]->get_last_used_time()){
+      last = set[i]->get_last_used_time();
+      block = set[i];
+    }
+  }
+  if(block->is_dirty()){
+    block->write_data_to_memory(_memory);
+  }
+  block ->set_tag(tag);
+  block ->read_data_from_memory(_memory);
+  block ->mark_as_valid();
+  block ->mark_as_clean();
+  return block;
 }
 
 uint32_t CacheSimulator::read_access(uint32_t address) const {

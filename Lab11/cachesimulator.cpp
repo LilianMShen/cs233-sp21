@@ -11,7 +11,28 @@ Cache::Block* CacheSimulator::find_block(uint32_t address) const {
    * 3. If you find the block, increment `_hits` and return a pointer to the
    *    block. Otherwise, return NULL.
    */
-  return NULL;
+  // use cache's cacheconfig 
+  // then input address + cacheconfig into utils
+  // then use these to search for the block
+  const CacheConfig& config = _cache->get_config();
+  uint32_t tag = extract_tag(address, config);
+  uint32_t index = extract_index(address, config);
+  
+  vector<Cache::Block*> set = _cache->get_blocks_in_set(index);
+  Cache::Block *block = nullptr;
+
+  for (int i = 0; i < set.size(); i++){
+    if (set[i]->get_tag() == tag && set[i]->is_valid()) {
+      block = set[i];
+      _hits++;
+    }
+  }
+  
+  if (block == nullptr){
+    return NULL;
+  }
+
+  return (block);
 }
 
 Cache::Block* CacheSimulator::bring_block_into_cache(uint32_t address) const {

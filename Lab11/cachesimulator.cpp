@@ -96,7 +96,14 @@ uint32_t CacheSimulator::read_access(uint32_t address) const {
    * 3. Update the `last_used_time` for the `block`.
    * 4. Use `read_word_at_offset` to return the data at `address`.
    */
-  return 0;
+  const CacheConfig& config = _cache->get_config();
+  uint32_t offset = extract_block_offset(address, config);
+  Cache::Block* block = find_block(address);
+  if (block == NULL){
+    block = bring_block_into_cache(address);
+  }
+  block->set_last_used_time(_use_clock.get_count());
+  return read_word_at_offset(offset);
 }
 
 void CacheSimulator::write_access(uint32_t address, uint32_t word) const {

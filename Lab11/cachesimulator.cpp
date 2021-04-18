@@ -122,18 +122,19 @@ void CacheSimulator::write_access(uint32_t address, uint32_t word) const {
    * 5. a. If the policy is write back, mark `block` as dirty.
    *    b. Otherwise, write `word` to `address` in memory.
    */
-  // Cache::Block* block = find_block(address);
-  // if (block == NULL){
-  //   if(_policy.is_write_allocate()){
-  //     block = bring_block_into_cache(address);
-  //   } else {
-  //     _memory->write_word(address, word);
-  //   }
-  // }
-  // block->set_last_used_time(_use_clock.get_count());
-  // if(_policy.is_write_back()){
-  //   block->mark_as_dirty();
-  // } else {
-  //   _memory->write_word(address, word);
-  // }
+  Cache::Block* block = find_block(address);
+  if (block == NULL){
+    if(_policy.is_write_allocate()){
+      block = bring_block_into_cache(address);
+    } else {
+      _memory->write_word(address, word);
+      return;
+    }
+  }
+  block->set_last_used_time(_use_clock.get_count());
+  if(_policy.is_write_back()){
+    block->mark_as_dirty();
+  } else {
+    _memory->write_word(address, word);
+  }
 }

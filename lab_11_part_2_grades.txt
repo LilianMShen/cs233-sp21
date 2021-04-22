@@ -1,0 +1,27 @@
+Grades for version committed on time
+	unit_tests: 10.67 / 16
+			*Passed test: extract
+			*Failed test: get address
+			*Passed test: num bits
+		
+	four_caches: 32.0 / 64
+			*Partially passed test:        1       1       1       0       0	(write-through, write-around) Incorrect values in cache but reads, writes, accesses, hits correct
+			*Partially passed test:    65536    1024       8       0       0	(write-through, write-around) Incorrect values in cache but reads, writes, accesses, hits correct
+			*Partially passed test:   131072     512       2       0       0	(write-through, write-around) Incorrect values in cache but reads, writes, accesses, hits correct
+			*Partially passed test:     2048      32       4       0       0	(write-through, write-around) Incorrect values in cache but reads, writes, accesses, hits correct
+			*Partially passed test:        1       1       1       0       1	(write-through, write-allocate) Incorrect values in cache but reads, writes, accesses, hits correct
+			*Partially passed test:    65536    1024       8       0       1	(write-through, write-allocate) Incorrect values in cache but reads, writes, accesses, hits correct
+			*Partially passed test:   131072     512       2       0       1	(write-through, write-allocate) Incorrect values in cache but reads, writes, accesses, hits correct
+			*Partially passed test:     2048      32       4       0       1	(write-through, write-allocate) Incorrect values in cache but reads, writes, accesses, hits correct
+			*Partially passed test:        1       1       1       1       0	(write-back, write-around) Incorrect values in cache but reads, writes, accesses, hits correct
+			*Partially passed test:    65536    1024       8       1       0	(write-back, write-around) Incorrect values in cache but reads, writes, accesses, hits correct
+			*Partially passed test:   131072     512       2       1       0	(write-back, write-around) Incorrect values in cache but reads, writes, accesses, hits correct
+			*Partially passed test:     2048      32       4       1       0	(write-back, write-around) Incorrect values in cache but reads, writes, accesses, hits correct
+			*Partially passed test:        1       1       1       1       1	(write-back, write-allocate) Incorrect values in cache but reads, writes, accesses, hits correct
+			*Partially passed test:    65536    1024       8       1       1	(write-back, write-allocate) Incorrect values in cache but reads, writes, accesses, hits correct
+			*Partially passed test:   131072     512       2       1       1	(write-back, write-allocate) Incorrect values in cache but reads, writes, accesses, hits correct
+			*Partially passed test:     2048      32       4       1       1	(write-back, write-allocate) Incorrect values in cache but reads, writes, accesses, hits correct
+		
+Total: 42.67 / 80
+
+Final Score: 42.67 / 80

@@ -1,0 +1,13 @@
+Grades for version committed on time
+	keypad: 0 / 25
+		Failed to compile
+		
+	extract_message: 0 / 25
+		Failed to compile
+		
+	count_ones: 0 / 30
+		Failed to compile
+		
+Total: 0.0 / 80
+
+Final Score: 0.0 / 80

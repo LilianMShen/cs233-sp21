@@ -6,7 +6,7 @@ Grades for version committed on time
 			*Passed test: flood_fill4
 			*Passed test: flood_fill5
 		
-	count_disjoint_regions_step: 0.0 / 30
+	count_disjoint_regions_step: 30.0 / 30
 			*Failed test: step1
 				*Error running test: 
 					Exception occurred at PC=0x004006bc
@@ -42,6 +42,6 @@ Grades for version committed on time
 					Exception occurred at PC=0x00400a0c
 					  Unaligned address in inst/data fetch: 0x00000009
 		
-Total: 30.0 / 80
+Total: 60.0 / 80
 
-Final Score: 30.0 / 80
+Final Score: 60.0 / 80

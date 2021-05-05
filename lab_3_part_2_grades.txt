@@ -1,0 +1,15 @@
+Grades for version committed on time
+	arraySortCheck_control: 80.0 / 80.0
+			*Passed test: Trivial
+			*Passed test: Sorted
+			*Passed test: Unsorted
+			*Passed test: Subsequent Runs
+			*Passed test: 0 Length Unsorted
+			*Passed test: 1 Length Unsorted
+			*Passed test: Change Base Mid Run
+			*Passed test: Reset Mid Run
+			*Passed test: Walking Off The Edge
+		
+Total: 80.0 / 80.0
+
+Final Score: 80.0 / 80.0

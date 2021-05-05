@@ -1,0 +1,10 @@
+Grades for version committed on time
+	alu1: 0.0 / 20.0
+		Failed to compile
+		
+	alu32: 0.0 / 60.0
+		Failed to compile
+		
+Total: 0.0 / 80.0
+
+Final Score: 0.0 / 80.0
